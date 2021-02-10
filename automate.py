@@ -11,6 +11,7 @@ if file is not None:
     a = pd.Series([])
     df1 = pd.Series([])
     df['y'] = pd.to_datetime(df['Date'], format="%d-%m-%Y %H:%M")
+    df['Date']=df['z'][0]
     df['Age'] = (df['y'] - df['z']).dt.days
 
     for i in range(len(df)):
