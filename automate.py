@@ -17,7 +17,7 @@ if file is not None:
         if df["Age"][i] == 0:
             a[i] = "0-24hrs"
 
-        elif 3 >= df["Age"][i] > 0:
+        elif 3 > df["Age"][i] > 0:
             a[i] = "1-3days"
 
         else:
