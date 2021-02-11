@@ -3,6 +3,7 @@ from datetime import datetime as dt
 import numpy as np
 import streamlit as st
 st.set_page_config(layout="wide")
+st.title("keerthi's project")
 file = st.file_uploader("upload your file",type=['csv'])
 if file is not None:
     df = pd.read_csv(file)
