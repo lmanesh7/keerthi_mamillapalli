@@ -41,6 +41,8 @@ if file is not None:
     table2 = pd.pivot_table(df, values=['TicketID'], index=['Owner'],
                             columns=['Backlog Status'], aggfunc='count', fill_value='', margins=True,
                             margins_name='Grand Total')
+    table3 = pd.pivot_table(df4, values =['CLOSEDBY'], index =['OWNER'], 
+                         aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
 
     col1, col2 = st.beta_columns(2)
     col1.header("Priority Wise Report")
@@ -49,6 +51,8 @@ if file is not None:
     col2.table(table2)
     col1.header("Age Wise Report")
     col1.table(table)
+    col2.header("Ikkada closed by eh na?")
+    col2.table(table3)
     st.bar_chart(tablep)
 
     my_expander = st.beta_expander("Priority Wise Report")
