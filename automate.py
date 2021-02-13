@@ -10,6 +10,7 @@ if file is None:
 file1 = st.file_uploader("upload your closed by file",type=['csv'])
 if file1 is None:
        st.write("Closed by file not uploaded!")
+col1, col2 = st.beta_columns(2)
 if file is not None:
     df = pd.read_csv(file)
     df['z'] = pd.to_datetime(df['Created Date'], format="%d-%m-%Y %H:%M")
@@ -48,7 +49,7 @@ if file is not None:
                             margins_name='Grand Total')
   
 
-    col1, col2 = st.beta_columns(2)
+    
     col1.header("Priority Wise Report")
     col1.table(table1)
     col2.header("Status Wise Report")
@@ -70,7 +71,7 @@ if file1 is not None:
     table3 = pd.pivot_table(df4, values =['CLOSEDBY'], index =['OWNER'], 
                          aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
     
-    col1, col2 = st.beta_columns(2)
+    
     col2.header("Ikkada closed by eh na?")
     col2.table(table3)
  
