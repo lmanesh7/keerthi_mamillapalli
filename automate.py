@@ -69,6 +69,8 @@ if file1 is not None:
     df4 = pd.read_csv(file1)
     table3 = pd.pivot_table(df4, values =['CLOSEDBY'], index =['OWNER'], 
                          aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
+    
+    col1, col2 = st.beta_columns(2)
     col2.header("Ikkada closed by eh na?")
     col2.table(table3)
  
