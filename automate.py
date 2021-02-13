@@ -6,6 +6,8 @@ st.set_page_config(layout="wide")
 #st.title("keerthi's project")
 file = st.file_uploader("upload your file",type=['csv'])
 file1 = st.file_uploader("upload your closed by file",type=['csv'])
+if file1 is None:
+       st.write("Closed by file not uploaded!")
 if file is not None:
     df = pd.read_csv(file)
     df['z'] = pd.to_datetime(df['Created Date'], format="%d-%m-%Y %H:%M")
@@ -68,7 +70,6 @@ if file1 is not None:
                          aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
     col2.header("Ikkada closed by eh na?")
     col2.table(table3)
-else:
-    st.write("Closed by file not uploaded!")
+ 
     
 
