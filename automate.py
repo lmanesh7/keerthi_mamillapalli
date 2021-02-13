@@ -5,6 +5,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 #st.title("keerthi's project")
 file = st.file_uploader("upload your file",type=['csv'])
+file1 = st.file_uploader("upload your file",type=['csv'])
 if file is not None:
     df = pd.read_csv(file)
     df['z'] = pd.to_datetime(df['Created Date'], format="%d-%m-%Y %H:%M")
@@ -41,8 +42,7 @@ if file is not None:
     table2 = pd.pivot_table(df, values=['TicketID'], index=['Owner'],
                             columns=['Backlog Status'], aggfunc='count', fill_value='', margins=True,
                             margins_name='Grand Total')
-    table3 = pd.pivot_table(df4, values =['CLOSEDBY'], index =['OWNER'], 
-                         aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
+  
 
     col1, col2 = st.beta_columns(2)
     col1.header("Priority Wise Report")
@@ -51,8 +51,7 @@ if file is not None:
     col2.table(table2)
     col1.header("Age Wise Report")
     col1.table(table)
-    col2.header("Ikkada closed by eh na?")
-    col2.table(table3)
+  
     st.bar_chart(tablep)
 
     my_expander = st.beta_expander("Priority Wise Report")
@@ -63,4 +62,13 @@ if file is not None:
     my_expander.write(table1)
 else:
     st.write("file not uploaded")
+if file1 is not None:
+    df4 = pd.read_csv(file1)
+    table3 = pd.pivot_table(df4, values =['CLOSEDBY'], index =['OWNER'], 
+                         aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
+    col2.header("Ikkada closed by eh na?")
+    col2.table(table3)
+else:
+    st.write("Closed by file not uploaded!")
+    
 
