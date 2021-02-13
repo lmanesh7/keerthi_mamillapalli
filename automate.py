@@ -13,7 +13,7 @@ if file1 is None:
 col1, col2 = st.beta_columns(2)
 if file is not None:
     df = pd.read_csv(file)
-    df['z'] = pd.to_datetime(df['Created Date'], format="%d-%m-%Y %H:%M:%S")
+    df['z'] = pd.to_datetime(df['Created Date'])
     l = []
     a = pd.Series([])
     df1 = pd.Series([])
