@@ -5,6 +5,8 @@ import streamlit as st
 st.set_page_config(layout="wide")
 #st.title("keerthi's project")
 file = st.file_uploader("upload your file",type=['csv'])
+if file is None:
+       st.write("file not uploaded")
 file1 = st.file_uploader("upload your closed by file",type=['csv'])
 if file1 is None:
        st.write("Closed by file not uploaded!")
@@ -62,8 +64,7 @@ if file is not None:
     my_expander.write(table1)
     my_expander = st.beta_expander("Age Wise Report")
     my_expander.write(table1)
-else:
-    st.write("file not uploaded")
+    
 if file1 is not None:
     df4 = pd.read_csv(file1)
     table3 = pd.pivot_table(df4, values =['CLOSEDBY'], index =['OWNER'], 
