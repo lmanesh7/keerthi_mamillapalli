@@ -3,7 +3,7 @@ from datetime import datetime as dt
 import numpy as np
 import streamlit as st
 st.set_page_config(layout="wide")
-st.title("keerthi's project")
+#st.title("keerthi's project")
 file = st.file_uploader("upload your file",type=['csv'])
 if file is not None:
     df = pd.read_csv(file)
@@ -44,11 +44,11 @@ if file is not None:
 
     col1, col2 = st.beta_columns(2)
     col1.header("Priority Wise Report")
-    col1.write(table1)
+    col1.table(table1)
     col2.header("Status Wise Report")
-    col2.write(table2)
+    col2.table(table2)
     col1.header("Age Wise Report")
-    col1.write(table)
+    col1.table(table)
     st.bar_chart(tablep)
 
     my_expander = st.beta_expander("Priority Wise Report")
