@@ -72,7 +72,7 @@ if file1 is not None:
                          aggfunc ='count',fill_value='',margins=True,margins_name='Grand Total' )
     
     
-    col2.header("Ikkada closed by eh na?")
+    col2.header("closed by report")
     col2.table(table3)
  
     
